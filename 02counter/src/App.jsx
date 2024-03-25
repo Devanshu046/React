@@ -4,41 +4,38 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-
-  let [counter , setCounter] = useState(15)
+  let [counter, setCounter] = useState(15);
 
   // let counter = 15;
 
   const addValue = () => {
     console.log("clicked", counter);
     // counter = counter + 1;
-    if(counter <20){
-      setCounter(counter + 1)
-    }else{
-      setCounter(counter )
-      
-    }
+
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    //here useState take a input in batches for that setCounter do same work here
+    setCounter(prevCounter => prevCounter + 1);
+    setCounter(prevCounter => prevCounter + 1);
+    setCounter(prevCounter => prevCounter + 1);
+    setCounter(prevCounter => prevCounter + 1);
+    //here setCounter has a callback function and bcz of that here it's taking previous value then 2nd setCounter process and so on ...
+    
   };
 
-  const removeValue = () =>{
-    if(counter > 0){
-      setCounter(counter - 1)
-    }else{
-      setCounter(counter)
-    }
-  }
+  const removeValue = () => {
+    setCounter(counter - 1);
+  };
 
   return (
     <>
       <h1>chai aur react</h1>
       <h2>counter value : {counter}</h2>
-      <button 
-      onClick={addValue}
-      >Add value {counter}</button> 
+      <button onClick={addValue}>Add value {counter}</button>
       <br />
-      <button
-      onClick={removeValue}
-      >Decrease value {counter}</button>
+      <button onClick={removeValue}>Decrease value {counter}</button>
     </>
   );
 }
